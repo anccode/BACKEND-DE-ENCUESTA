@@ -1,3 +1,4 @@
  module.exports = {
-    mogoUrl:"" //you data base 
+    mogoUrl:"", //you data base 
+    jwtkey: "asdasdas"
  }

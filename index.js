@@ -5,7 +5,10 @@ const app = express()
 const PORT = 3000 
 const {mogoUrl} = require('./keys')
 
+
 require('./models/User');
+
+const requireToken = require('./middleware/requireToken')
 
 const authRoutes = require('./routes/authRoutes')
   
@@ -24,7 +27,9 @@ mongoose.connection.on('error',(err)=>{
     console.log("this is error",err)
 })
 
-
+app.get('/',requireToken,(req,res)=>{
+    res.send("your email is " + req.user.email)
+})
 
 app.listen(PORT,()=> {
     console.log('server running' + PORT)
