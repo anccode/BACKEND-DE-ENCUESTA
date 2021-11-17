@@ -3,10 +3,14 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
 const PORT = 3000 
-
 const {mogoUrl} = require('./keys')
 
 require('./models/User');
+
+const authRoutes = require('./routes/authRoutes')
+  
+app.use(bodyParser.json())
+app.use(authRoutes)
 
 mongoose.connect(mogoUrl,{
     useNewUrlParser: true,
@@ -20,13 +24,6 @@ mongoose.connection.on('error',(err)=>{
     console.log("this is error",err)
 })
 
-app.use(bodyParser.json())
-
-
-app.post('/',(req,res) => {
-    console.log(req.body)
-    res.send('hola')
-})
 
 
 app.listen(PORT,()=> {
