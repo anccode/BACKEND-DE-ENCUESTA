@@ -1,16 +1,28 @@
 {
   "name": "backend-app",
   "version": "1.0.0",
-  "description": "login",
-  "main": "app.js",
+  "description": "app-salud",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon index.js"
   },
-  "author": "josngel",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/josngel/backend-app.git"
+  },
+  "author": "angel",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josngel/backend-app/issues"
+  },
+  "homepage": "",
   "dependencies": {
-    "dotenv": "^10.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^6.0.13"
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.0-alpha.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.3.0"
   }
 }

@@ -1,2 +1,1 @@
-npm install dotenv
-npm install mongoose
+npm i sequelize sequelize-cli
