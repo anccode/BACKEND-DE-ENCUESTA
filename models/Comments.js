@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Comments = sequelize.define("Comments", {
-    commentBody: {
+    commentbody: {
       type: DataTypes.STRING,
       allowNull: false,
     },  
