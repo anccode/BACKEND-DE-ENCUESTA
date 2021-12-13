@@ -9,14 +9,14 @@ router.get("/:postId", async (req, res) => {
     where: {  
       PostId: postId,
     },
-  });
+  });                                                     
   res.json(comments);
-});
+}); 
 
 router.post("/",validateToken, async (req,res)=>{
     const comment = req.body;
-    const username = req.user.username;
-    comment.username = username; 
+    const username = req.user.correo;
+    comment.username = username;                                                                                                                                                                                                                                                                                    
     await Comments.create(comment);
     res.json(comment);
 });
@@ -24,8 +24,7 @@ router.post("/",validateToken, async (req,res)=>{
 router.delete('/:commentId', validateToken, async (req,res) =>{
   const commentId = req.params.commentId;
   await Comments.destroy({where: {
-    id: commentId,
-      
+    id: commentId,      
   }})
   res.json("delete success")
 

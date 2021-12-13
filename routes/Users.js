@@ -20,8 +20,8 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await Users.findOne({ where: { username: username } });
+  const { correo, password  } = req.body;
+  const user = await Users.findOne({ where: { correo: correo } });
 
   if (!user) res.json({ error: "usuario no existe" });
 
@@ -29,11 +29,11 @@ router.post("/login", async (req, res) => {
     if (!match) res.json({ error: "tu usuario y tu contraseña es incorrecto" });
 
     const accessToken = sign(
-      { username: user.username, id: user.id },
+      { correo: user.correo, id: user.id },
       "importantsecret"
     );
 
-    res.json({ token: accessToken, username: username, id: user.id });
+    res.json({ token: accessToken, correo: correo, id: user.id });
   });
 });
 
