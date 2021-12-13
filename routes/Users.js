@@ -51,7 +51,7 @@ router.get("/basicinfo/:id", async (req, res) => {
  
 router.put("/changepassword", validateToken, async (req, res) => {
   const { oldPassword, newPassword } = req.body;
-  const user = await Users.findOne({ where: { username: req.user.username } });
+  const user = await Users.findOne({ where: { correo: req.user.correo } });
 
   bcrypt.compare(oldPassword, user.password).then(async (match) => {
     if (!match) res.json({ error: "Wrong Password Entered!" });
@@ -59,7 +59,7 @@ router.put("/changepassword", validateToken, async (req, res) => {
     bcrypt.hash(newPassword, 10).then((hash) => {
       Users.update(
         { password: hash },
-        { where: { username: req.user.username } }
+        { where: { correo: req.user.correo } }
       );
       res.json("SUCCESS");
     });
