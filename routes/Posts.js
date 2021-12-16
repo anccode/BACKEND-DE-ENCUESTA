@@ -3,6 +3,12 @@ const router = express.Router();
 const {Posts, Likes} = require('../models');
 const {validateToken} = require('../midlewares/Authmiddleware');
 
+
+router.get("/general", async (req, res) => {
+    const listOfPosts = await Posts.findAll();
+    res.json(listOfPosts);
+  });
+
 router.get("/",validateToken, async (req,res) => {
     const listOfPosts = await Posts.findAll({include: [Likes]})
     const likedPosts= await Likes.findAll({where: {UserId: req.user.id }})

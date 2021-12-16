@@ -31,15 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       p8: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-      },
-      p9: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      p10: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
+      }
     });  
     return Cuestionarios;
   };
