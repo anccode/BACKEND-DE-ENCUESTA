@@ -11,8 +11,9 @@ router.post("/", validateToken, async (req, res) => {
   await Cuestionarios.create(cuestionarios);
   res.json(cuestionarios);
 });
-router.get("/resultados", async (req, res) => {
-  const cuestionarios = await Cuestionarios.findAll();
+router.get("/resultados/:id", async (req, res) => {
+  const id = req.params.id;
+  const cuestionarios = await Cuestionarios.findAll({where:{ UserId: id }});
   res.json(cuestionarios);
 });
 
