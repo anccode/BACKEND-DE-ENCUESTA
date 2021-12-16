@@ -11,5 +11,9 @@ router.post("/", validateToken, async (req, res) => {
   await Cuestionarios.create(cuestionarios);
   res.json(cuestionarios);
 });
+router.get("/resultados", async (req, res) => {
+  const cuestionarios = await Cuestionarios.findAll();
+  res.json(cuestionarios);
+});
 
 module.exports = router;
